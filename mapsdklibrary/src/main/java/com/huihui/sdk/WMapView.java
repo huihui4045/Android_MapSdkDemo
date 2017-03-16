@@ -22,6 +22,8 @@ public class WMapView extends FrameLayout {
     public WMapView(@NonNull Context context) {
         super(context);
         initView(context);
+
+
     }
 
     public WMapView(@NonNull Context context, @Nullable AttributeSet attrs) {

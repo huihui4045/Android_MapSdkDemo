@@ -3,10 +3,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.huihui.sdk.demo.MainActivity">
 
     <com.huihui.sdk.WMapView
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:visibility="gone" />
+
+
+    <com.huihui.sdk.widget.AnchorPointView
+        android:layout_marginRight="100dp"
+        android:layout_width="100dp"
+        android:layout_height="150dp" />
 
 </LinearLayout>
