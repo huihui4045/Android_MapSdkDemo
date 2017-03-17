@@ -6,15 +6,15 @@
     android:orientation="vertical"
     tools:context="com.huihui.sdk.demo.MainActivity">
 
-    <com.huihui.sdk.WMapView
+    <com.wiwj.mapsdk.WIWJMapView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:visibility="gone" />
 
 
-    <com.huihui.sdk.widget.AnchorPointView
-        android:layout_marginRight="100dp"
+    <com.wiwj.mapsdk.widget.AnchorPointView
         android:layout_width="100dp"
-        android:layout_height="150dp" />
+        android:layout_height="150dp"
+        android:layout_marginRight="100dp" />
 
 </LinearLayout>
