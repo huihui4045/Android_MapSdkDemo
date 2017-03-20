@@ -8,12 +8,14 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
-import com.huihui.sdk.WSDKInitializer;
+import com.wiwj.mapsdk.WIWJMapView;
+import com.wiwj.mapsdk.WSDKInitializer;
 
 
 public class MainActivity extends AppCompatActivity {
 
     private String LTAG = getClass().getSimpleName();
+    private WIWJMapView mMapView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +31,13 @@ public class MainActivity extends AppCompatActivity {
         iFilter.addAction(WSDKInitializer.SDK_BROADCAST_ACTION_STRING_NETWORK_ERROR);
         mReceiver = new SDKReceiver();
         registerReceiver(mReceiver, iFilter);
+
+
+        mMapView = ((WIWJMapView) findViewById(R.id.mapView));
+
+        mMapView.addTextMarker();
+
+
     }
 
 

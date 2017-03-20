@@ -20,13 +20,31 @@ android {
         }
     }
 
+    sourceSets {
+        main {
+            jniLibs.srcDir 'libs'
+        }
+
+        // Move the tests to tests/java, tests/res, etc...
+        instrumentTest.setRoot('tests')
+
+        // Move the build types to build-types/<type>
+        // For instance, build-types/debug/java, build-types/debug/AndroidManifest.xml, ...
+        // This moves them out of them default location under src/<type>/... which would
+        // conflict with src/ being used by the main source set.
+        // Adding new build types or product flavors should be accompanied
+        // by a similar customization.
+        debug.setRoot('build-types/debug')
+        release.setRoot('build-types/release')
+    }
+
 }
 
-repositories {
+/*repositories {
     flatDir {
         dirs 'libs'
     }
-}
+}*/
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
@@ -37,4 +55,6 @@ dependencies {
     compile 'com.android.support.constraint:constraint-layout:1.0.0-alpha8'
     testCompile 'junit:junit:4.12'
     compile project(':mapsdklibrary')
+    //compile project(':baidumaplibrary')
+    //compile files('src/libs/sdk_V0.0.1.jar')
 }

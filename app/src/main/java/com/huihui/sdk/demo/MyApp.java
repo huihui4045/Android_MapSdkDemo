@@ -2,7 +2,8 @@ package com.huihui.sdk.demo;
 
 import android.app.Application;
 
-import com.huihui.sdk.WSDKInitializer;
+import com.wiwj.mapsdk.WSDKInitializer;
+
 
 /**
  * Created by gavin on 2017/3/15.

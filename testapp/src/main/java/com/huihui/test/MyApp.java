@@ -2,7 +2,8 @@ package com.huihui.test;
 
 import android.app.Application;
 
-import com.huihui.sdk.WSDKInitializer;
+import com.test.wiwj.sdk.WSDKInitializer;
+
 
 /**
  * Created by gavin on 2017/3/15.

@@ -1,1 +1,1 @@
-include ':app', ':baidumaplibrary', ':testapp',"mapsdklibrary"
+include ':app', ':baidumaplibrary', ':testapp', ':testmapsdklibrary', "mapsdklibrary"

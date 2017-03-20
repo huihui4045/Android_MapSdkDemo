@@ -8,7 +8,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
-import com.huihui.sdk.WSDKInitializer;
+import com.test.wiwj.sdk.WSDKInitializer;
+
 
 public class MainActivity extends AppCompatActivity {
 

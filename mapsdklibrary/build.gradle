@@ -16,6 +16,32 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    /*sourceSets {
+        main {
+            jniLibs.srcDir 'libs'
+        }
+
+        // Move the tests to tests/java, tests/res, etc...
+        instrumentTest.setRoot('tests')
+
+        // Move the build types to build-types/<type>
+        // For instance, build-types/debug/java, build-types/debug/AndroidManifest.xml, ...
+        // This moves them out of them default location under src/<type>/... which would
+        // conflict with src/ being used by the main source set.
+        // Adding new build types or product flavors should be accompanied
+        // by a similar customization.
+        debug.setRoot('build-types/debug')
+        release.setRoot('build-types/release')
+    }*/
+    lintOptions {
+        abortOnError false
     }
 
 
@@ -28,15 +54,31 @@ dependencies {
     })
     compile 'com.android.support:appcompat-v7:25.1.0'
     testCompile 'junit:junit:4.12'
-    compile project(':baidumaplibrary')
+    //compile project(':baidumaplibrary')
+}
+
+def SDK_BASENAME = "sdk";
+def SDK_VERSION = "_V0.0.1";
+def sdkDestinationPath = "build";
+def zipFile = file('build/intermediates/bundles/default/classes.jar')
+
+task deleteBuild(type: Delete) {
+    delete sdkDestinationPath + SDK_BASENAME + SDK_VERSION + ".jar"
 }
 
 //Copy类型
-task makeJar(type: Copy) {
-    //删除存在的
+task makeJar(type: Jar) {
+
+    from zipTree(zipFile)
+    from fileTree(dir: 'src/main', includes: ['assets/**'])
+    baseName = SDK_BASENAME + SDK_VERSION
+    destinationDir = file(sdkDestinationPath)
+
+    /*//删除存在的
     delete 'build/libs/mysdk.jar'
     //设置拷贝的文件
     from('build/intermediates/bundles/default/')
+
     //打进jar包后的文件目录
     into('build/libs/')
     //将classes.jar放入build/libs/目录下
@@ -44,9 +86,9 @@ task makeJar(type: Copy) {
     //（我们只关心classes.jar这个文件）
     include('classes.jar')
     //重命名
-    rename ('classes.jar', 'WIWJMapSdk.jar')
+    rename ('classes.jar', 'TestWIWJMapSdk.jar')*/
 }
 
-makeJar.dependsOn(build)
+makeJar.dependsOn(deleteBuild, build)
 //在终端执行生成JAR包
 // gradlew makeJar
